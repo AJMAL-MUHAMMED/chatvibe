@@ -6,12 +6,12 @@ import ReactsPopup from "./ReactsPopup";
 import { useState } from "react";
 import CreateComment from "./CreateComment";
 import PostMenu from "./PostMenu";
-export default function Post({ post, user }) {
+export default function Post({ post, user, profile }) {
   const [visible, setVisible] = useState(false);
   const [showMenu, setShowMenu] = useState(false);
 
   return (
-    <div className="post">
+    <div className="post" style={{ width: `${profile && "100%"}` }}>
       <div className="post_header">
         <Link
           to={`/profile/${post.user.username}`}
@@ -23,12 +23,10 @@ export default function Post({ post, user }) {
               {post.user.first_name} {post.user.last_name}
               <div className="updated_p">
                 {post.type == "profilePicture" &&
-                  `updated ${
-                    post.user.gender === "male" ? "his" : "her"
+                  `updated ${post.user.gender === "male" ? "his" : "her"
                   } profile picture`}
                 {post.type == "cover" &&
-                  `updated ${
-                    post.user.gender === "male" ? "his" : "her"
+                  `updated ${post.user.gender === "male" ? "his" : "her"
                   } cover picture`}
               </div>
             </div>
@@ -63,12 +61,12 @@ export default function Post({ post, user }) {
                 post.images.length === 1
                   ? "grid_1"
                   : post.images.length === 2
-                  ? "grid_2"
-                  : post.images.length === 3
-                  ? "grid_3"
-                  : post.images.length === 4
-                  ? "grid_4"
-                  : post.images.length >= 5 && "grid_5"
+                    ? "grid_2"
+                    : post.images.length === 3
+                      ? "grid_3"
+                      : post.images.length === 4
+                        ? "grid_4"
+                        : post.images.length >= 5 && "grid_5"
               }
             >
               {post.images.slice(0, 5).map((image, i) => (

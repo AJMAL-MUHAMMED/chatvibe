@@ -12,7 +12,6 @@ exports.getAllPosts = async (req, res) => {
   try {
     const posts = await Post.find()
      .populate("user", "first_name last_name picture username gender")
-    // .populate({path: 'user', select: ['first_name', 'last_name']})
       .sort({ createdAt: -1 });
       console.log(posts);
     res.json(posts);

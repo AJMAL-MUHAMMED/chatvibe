@@ -19,8 +19,8 @@ app.use(morgan('dev'))
 //routes
 readdirSync("./routes").map((r) => app.use("/", require("./routes/" + r)));
 
-app.use((err, req, res, next)=>{
-  if(err) console.log(err.message);
+app.use((err, req, res, next) => {
+  if (err) console.log(err.message);
   next()
 })
 

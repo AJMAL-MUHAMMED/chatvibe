@@ -23,8 +23,7 @@ export default function SendVerification({ user }) {
   return (
     <div className="send_verification">
       <span>
-        Your account is not verified,verify your account before it gets deleted
-        after a month from creating.
+       Please verify your accout with email.
       </span>
       <a
         onClick={() => {
