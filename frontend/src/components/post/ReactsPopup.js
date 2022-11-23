@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useSelector } from "react-redux";
+import { reactPost } from "../../functions/post";
 
 const reactsArray = [
   {
@@ -26,7 +28,7 @@ const reactsArray = [
     image: "../../../reacts/angry.gif",
   },
 ];
-export default function ReactsPopup({ visible, setVisible }) {
+export default function ReactsPopup({ visible, setVisible,reactHandler }) {
   return (
     <>
       {visible && (
@@ -44,7 +46,9 @@ export default function ReactsPopup({ visible, setVisible }) {
           }}
         >
           {reactsArray.map((react, i) => (
-            <div className="react" key={i}>
+            <div className="react" key={i}
+              onClick={() => reactHandler(react.name)}
+            >
               <img src={react.image} alt="" />
             </div>
           ))}
