@@ -73,13 +73,13 @@ const userSchema = mongoose.Schema(
         ref: 'Users'
       }
     ],
-    following:[
+    following: [
       {
         type: ObjectId,
         ref: 'Users'
       }
     ],
-    followers:[
+    followers: [
       {
         type: ObjectId,
         ref: 'Users'
@@ -96,7 +96,12 @@ const userSchema = mongoose.Schema(
         user: {
           type: ObjectId,
           ref: "Users",
+          required: true
         },
+        createdAt: {
+          type: Date,
+          required: true
+        }
       },
     ],
     details: {

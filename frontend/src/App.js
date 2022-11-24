@@ -35,7 +35,7 @@ function App() {
             Authorization: `Bearer ${user.token}`,
           },
         }
-      ); 
+      );
       dispatch({
         type: "POSTS_SUCCESS",
         payload: data,
@@ -49,14 +49,14 @@ function App() {
   };
   return (
     <div>
-      {visible && <CreatePostPopup user={user} setVisible={setVisible} />}
+      {visible && <CreatePostPopup user={user} setVisible={setVisible} posts={posts} dispatch={dispatch} />}
       <Routes>
         <Route element={<LoggedInRoutes />}>
-          <Route path="/profile" element={<Profile setVisible={setVisible} />} exact />
-          <Route path="/profile/:username" element={<Profile setVisible={setVisible} />} exact />
+          <Route path="/profile" element={<Profile setVisible={setVisible} getAllPosts={getAllPosts} />} exact />
+          <Route path="/profile/:username" element={<Profile setVisible={setVisible} getAllPosts={getAllPosts} />} exact />
           <Route
             path="/"
-            element={<Home setVisible={setVisible} posts={posts} />}
+            element={<Home setVisible={setVisible} posts={posts} loading={loading} getAllPosts={getAllPosts} />}
             exact
           />
           <Route path="/activate/:token" element={<Activate />} exact />

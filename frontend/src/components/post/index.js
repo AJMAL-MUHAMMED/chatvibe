@@ -3,7 +3,7 @@ import "./style.css";
 import Moment from "react-moment";
 import { Dots, Public } from "../../svg";
 import ReactsPopup from "./ReactsPopup";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import CreateComment from "./CreateComment";
 import PostMenu from "./PostMenu";
 import { getReacts, reactPost } from "../../functions/post";
@@ -42,8 +42,9 @@ export default function Post({ post, user, profile }) {
   const showMore = () => {
     setCount((prev) => prev + 3);
   };
+  const postRef = useRef(null)
   return (
-    <div className="post" style={{ width: `${profile && "100%"}` }}>
+    <div className="post" style={{ width: `${profile && "100%"}` }} ref={postRef}>
       <div className="post_header">
         <Link
           to={`/profile/${post.user.username}`}
@@ -130,7 +131,7 @@ export default function Post({ post, user, profile }) {
         </div>
         <div className="to_right">
           <div className="comments_count">{comments.length}comments</div>
-          <div className="share_count">1 share</div>
+          {/* <div className="share_count">1 share</div> */}
         </div>
       </div>
       <div className="post_actions">
@@ -209,7 +210,7 @@ export default function Post({ post, user, profile }) {
             .map((comment, i) => <Comment comment={comment} key={i} />)}
         {count < comments.length && (
           <div className="view_comments"
-           onClick={() => showMore()}>
+            onClick={() => showMore()}>
             View more comments
           </div>
         )}
@@ -220,6 +221,9 @@ export default function Post({ post, user, profile }) {
           postUserId={post.user._id}
           imagesLength={post?.images?.length}
           setShowMenu={setShowMenu}
+          postId={post._id}
+          token={user.token}
+          postRef={postRef}
         />
       )}
     </div>
