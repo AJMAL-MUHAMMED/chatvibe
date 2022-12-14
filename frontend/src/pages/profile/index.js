@@ -97,7 +97,7 @@ export default function Profile({ getAllPosts }) {
           <div className="profile_grid">
             <div className="profile_left">
               <Photos username={userName} token={user.token} photos={photos} />
-              <Friends />
+              <Friends friends={profile.friends}/>
             </div>
             <div className="profile_right">
               {visitor && (<CreatePost user={user} profile setVisible={setVisible} />)}

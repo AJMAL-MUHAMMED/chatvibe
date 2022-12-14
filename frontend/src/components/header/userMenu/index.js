@@ -54,20 +54,7 @@ export default function UserMenu({ user }) {
               <i className="right_icon"></i>
             </div>
           </div>
-          <div
-            className="mmenu_item hover3"
-            onClick={() => {
-              setVisible(2);
-            }}
-          >
-            <div className="small_circle">
-              <i className="help_filled_icon"></i>
-            </div>
-            <span>Help & support</span>
-            <div className="rArrow">
-              <i className="right_icon"></i>
-            </div>
-          </div>
+          
           <div
             className="mmenu_item hover3"
             onClick={() => {
@@ -77,7 +64,7 @@ export default function UserMenu({ user }) {
             <div className="small_circle">
               <i className="dark_filled_icon"></i>
             </div>
-            <span>Display & Accessibility</span>
+            <span>Display Mode</span>
             <div className="rArrow">
               <i className="right_icon"></i>
             </div>
